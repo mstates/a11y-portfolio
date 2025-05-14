@@ -52,9 +52,10 @@ export function ThemeSwitcher() {
               value={option}
               // Use a function that returns the className string, but don't use the 'active' parameter
               className={({ selected }) => `
-                ${selected ? 'bg-indigo-100 dark:bg-indigo-900 text-indigo-900 dark:text-indigo-100' : 'text-gray-900 dark:text-gray-100'}
-                cursor-pointer select-none relative py-2 pl-10 pr-4 hover:bg-indigo-50 dark:hover:bg-indigo-800
-              `}
+  ${selected ? 'bg-indigo-100 dark:bg-indigo-900 text-indigo-900 dark:text-indigo-100' : 'text-gray-900 dark:text-gray-100'}
+  cursor-pointer select-none relative py-2 pl-10 pr-4 hover:bg-indigo-50 dark:hover:bg-indigo-800
+`}
+
             >
               {({ selected }) => (
                 <>
