@@ -1,5 +1,6 @@
   // src/app/resources/page.tsx
   import { Metadata } from 'next';
+
   import Link from 'next/link';
   import { BookOpenIcon, AcademicCapIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
   
