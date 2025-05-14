@@ -1,20 +1,12 @@
 // src/app/layout.tsx
+import { poppins } from './fonts';
 import './globals.css';
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
 import { ThemeProvider } from '@/components/common/ThemeProvider';
 import { ThemeScript } from '@/components/common/ThemeScript';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SkipLink from '@/components/a11y/SkipLink';
-
-// Initialize Poppins
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-poppins',
-});
 
 export const metadata: Metadata = {
   title: {
@@ -31,11 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={poppins.variable}>
+    <html lang="en" suppressHydrationWarning className={`${poppins.variable}`}>
       <head>
         <ThemeScript />
       </head>
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
         <ThemeProvider>
           <SkipLink />
           <Header />

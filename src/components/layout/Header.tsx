@@ -44,13 +44,6 @@ export default function Header() {
             
             <div className="flex items-center space-x-4">
               <ThemeSwitcher />
-              <Link
-                href="/contact"
-                className="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium bg-primary-600 text-white hover:bg-primary-700 transition-colors"
-              >
-                Get In Touch
-              </Link>
-              
               {/* Mobile menu button */}
               <button
                 type="button"
