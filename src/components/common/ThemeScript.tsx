@@ -5,7 +5,7 @@ export function ThemeScript() {
   return (
     <Script
       id="theme-script"
-      strategy="beforeInteractive"
+      strategy="afterInteractive"
       src="/scripts/theme.js"
     />
   );

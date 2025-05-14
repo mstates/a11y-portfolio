@@ -1,28 +1,29 @@
 @import "tailwindcss";
 
-/* CSS Variables for colors - Tailwind 4 approach */
+/* Custom dark mode selector - keep if it's working for you */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  /* Primary palette */
-  --color-primary: 14, 165, 233; /* sky-500 */
-  --color-primary-light: 56, 189, 248; /* sky-400 */
-  --color-primary-dark: 2, 132, 199; /* sky-600 */
+  --color-primary: 79, 70, 229; /* indigo-600 */
+  --color-secondary: 10, 102, 194; /* blue-700 */
   
   /* Light theme */
-  --color-background: 255, 255, 255;
-  --color-foreground: 15, 23, 42;
+  --color-background: 255, 255, 255; /* white */
+  --color-foreground: 17, 24, 39; /* gray-900 */
 }
 
 .dark {
+  --color-primary: 99, 102, 241; /* indigo-500 in dark mode */
+  --color-secondary: 59, 130, 246; /* blue-500 in dark mode */
+  
   /* Dark theme */
-  --color-background: 15, 23, 42;
-  --color-foreground: 255, 255, 255;
+  --color-background: 17, 24, 39; /* gray-900 */
+  --color-foreground: 255, 255, 255; /* white */
 }
-
-/* Keep your dark mode selector if it's working */
-@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   body {
-    @apply bg-[rgb(var(--color-background))] text-[rgb(var(--color-foreground))] transition-colors duration-200;
+    @apply bg-[rgb(var(--color-background))] text-[rgb(var(--color-foreground))];
+    transition: background-color 0.2s, color 0.2s;
   }
 }
