@@ -1,16 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  /* Base styles for light and dark mode */
-  body {
-    @apply bg-white text-gray-900 transition-colors duration-200;
-  }
+/* CSS Variables for colors - Tailwind 4 approach */
+:root {
+  /* Primary palette */
+  --color-primary: 14, 165, 233; /* sky-500 */
+  --color-primary-light: 56, 189, 248; /* sky-400 */
+  --color-primary-dark: 2, 132, 199; /* sky-600 */
   
-  .dark body {
-    @apply bg-gray-900 text-white;
-  }
+  /* Light theme */
+  --color-background: 255, 255, 255;
+  --color-foreground: 15, 23, 42;
 }
 
-/* You can add custom non-Tailwind styles below */
+.dark {
+  /* Dark theme */
+  --color-background: 15, 23, 42;
+  --color-foreground: 255, 255, 255;
+}
+
+/* Keep your dark mode selector if it's working */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply bg-[rgb(var(--color-background))] text-[rgb(var(--color-foreground))] transition-colors duration-200;
+  }
+}

@@ -1,4 +1,3 @@
-// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
@@ -11,24 +10,18 @@ module.exports = {
         sans: ['var(--font-poppins)', 'system-ui', 'sans-serif'],
       },
       colors: {
+        // Tailwind 4 encourages using RGB values in CSS variables
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-          950: '#082f49',
+          DEFAULT: 'rgb(var(--color-primary) / <alpha-value>)',
+          light: 'rgb(var(--color-primary-light) / <alpha-value>)',
+          dark: 'rgb(var(--color-primary-dark) / <alpha-value>)',
         },
-        // You can customize these colors to match your brand
       },
     },
   },
+  // If you decide to use Headless UI components:
   plugins: [
-    require('@headlessui/tailwindcss'), // Add this if you're using Headless UI
+    // Uncomment this if you install the package:
+    // require('@headlessui/tailwindcss'),
   ],
 };

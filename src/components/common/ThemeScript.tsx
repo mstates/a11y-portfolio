@@ -19,7 +19,6 @@ export function ThemeScript() {
                 document.documentElement.classList.remove('dark');
               }
             } catch (err) {
-              // Fail silently if localStorage is restricted
               console.log('Theme initialization error:', err);
             }
           })();
