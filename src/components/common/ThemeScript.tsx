@@ -1,29 +1,17 @@
 // src/components/common/ThemeScript.tsx
-import Script from 'next/script';
+import { ScriptProps } from 'next/script';
 
+// Create a separate file for the script content
 export function ThemeScript() {
+  // This will be included in the <head> of your document
   return (
-    <Script
-      id="theme-script"
-      strategy="beforeInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `
-          (function() {
-            try {
-              const storedTheme = localStorage.getItem('theme');
-              const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-              
-              if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
-                document.documentElement.classList.add('dark');
-              } else {
-                document.documentElement.classList.remove('dark');
-              }
-            } catch (err) {
-              console.log('Theme initialization error:', err);
-            }
-          })();
-        `
-      }}
-    />
+    <>
+      {/* Put this script in public/scripts/theme.js */}
+      <script
+        id="theme-script"
+        strategy="beforeInteractive"
+        src="/scripts/theme.js"
+      />
+    </>
   );
 }

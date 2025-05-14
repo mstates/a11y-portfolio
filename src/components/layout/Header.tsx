@@ -1,6 +1,6 @@
 // src/components/layout/Header.tsx
 import Link from 'next/link';
-import ThemeSwitcher from '@/components/common/ThemeSwitcher';
+import { ThemeSwitcher } from '@/components/common/ThemeSwitcher';
 
 export default function Header() {
   return (
