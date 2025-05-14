@@ -1,0 +1,110 @@
+// src/components/features/A11yDashboard.tsx
+  'use client';
+  
+  import { useState, useEffect } from 'react';
+  import { Chart } from '@/components/ui/Chart';
+  
+  // Mock a11y test results
+  const runA11yTests = async (url: string) => {
+    // In a real app, this would call an API or use a library
+    return {
+      passed: 42,
+      warnings: 8,
+      errors: 3,
+      categories: {
+        keyboard: { passed: 10, warnings: 2, errors: 0 },
+        images: { passed: 8, warnings: 1, errors: 1 },
+        forms: { passed: 12, warnings: 3, errors: 0 },
+        aria: { passed: 7, warnings: 2, errors: 2 },
+        structure: { passed: 5, warnings: 0, errors: 0 },
+      },
+    };
+  };
+  
+  export function A11yDashboard() {
+    const [url, setUrl] = useState('https://example.com');
+    const [results, setResults] = useState(null);
+    const [loading, setLoading] = useState(false);
+    
+    const handleTest = async () => {
+      setLoading(true);
+      try {
+        const data = await runA11yTests(url);
+        setResults(data);
+      } catch (error) {
+        console.error('Failed to run tests:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    return (
+      <div className="space-y-8">
+        <div className="flex space-x-4">
+          <input
+            type="text"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            className="flex-grow px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+            placeholder="Enter website URL"
+          />
+          <button
+            type="button"
+            onClick={handleTest}
+            disabled={loading}
+            className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50"
+          >
+            {loading ? 'Testing...' : 'Run Tests'}
+          </button>
+        </div>
+        
+        {results && (
+          <div className="space-y-8">
+            <div className="grid grid-cols-3 gap-4">
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                <h3 className="text-lg font-medium mb-2">Passed</h3>
+                <p className="text-4xl font-bold text-green-500">{results.passed}</p>
+              </div>
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                <h3 className="text-lg font-medium mb-2">Warnings</h3>
+                <p className="text-4xl font-bold text-yellow-500">{results.warnings}</p>
+              </div>
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                <h3 className="text-lg font-medium mb-2">Errors</h3>
+                <p className="text-4xl font-bold text-red-500">{results.errors}</p>
+              </div>
+            </div>
+            
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+              <h3 className="text-xl font-medium mb-4">Results by Category</h3>
+              <div className="h-80">
+                <Chart
+                  type="bar"
+                  data={{
+                    labels: Object.keys(results.categories),
+                    datasets: [
+                      {
+                        label: 'Passed',
+                        data: Object.values(results.categories).map(c => c.passed),
+                        backgroundColor: '#10B981',
+                      },
+                      {
+                        label: 'Warnings',
+                        data: Object.values(results.categories).map(c => c.warnings),
+                        backgroundColor: '#F59E0B',
+                      },
+                      {
+                        label: 'Errors',
+                        data: Object.values(results.categories).map(c => c.errors),
+                        backgroundColor: '#EF4444',
+                      },
+                    ],
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
