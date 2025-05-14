@@ -89,11 +89,11 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-                What I'm Looking For
+                What I&apos;m Looking For
               </h2>
               <div className="text-lg text-gray-600 dark:text-gray-300 space-y-4">
                 <p>
-                  I'm seeking a team that embraces accessibility as a product and cultural priority—not just a compliance box. 
+                  I&apos;m seeking a team that embraces accessibility as a product and cultural priority—not just a compliance box. 
                   A company where inclusive design is woven into the creative process, not retrofitted afterward.
                 </p>
                 <p>
@@ -102,11 +102,11 @@ export default function HomePage() {
                   with engineers, designers, and execs.
                 </p>
                 <p>
-                  I'm looking to contribute at a high level—driving roadmap decisions, mentoring world-class talent, 
+                  I&apos;m looking to contribute at a high level—driving roadmap decisions, mentoring world-class talent, 
                   and helping shape inclusive systems that scale with clarity and compassion.
                 </p>
                 <p>
-                  Remote or hybrid (SF welcome). I'm open to meaningful conversations about building more human-centered digital experiences.
+                  Remote or hybrid (SF welcome). I&apos;m open to meaningful conversations about building more human-centered digital experiences.
                 </p>
               </div>
             </div>
