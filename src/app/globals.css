@@ -4,6 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  --font-sans: var(--font-poppins);
   --color-primary: 79, 70, 229; /* indigo-600 */
   --color-secondary: 10, 102, 194; /* blue-700 */
   
