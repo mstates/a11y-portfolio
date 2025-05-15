@@ -23,12 +23,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${poppins.variable}`} suppressHydrationWarning>
+    <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>
       <body className='min-h-screen flex flex-col font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200'>
-        <ThemeProvider>
+        <ThemeProvider 
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        >
           <SkipLink />
           <Header />
           <main id="main-content" className="flex-grow">

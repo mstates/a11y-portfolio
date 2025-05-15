@@ -5,6 +5,7 @@
 
 :root {
   --font-sans: var(--font-poppins);
+  --font-heading: var(--font-montserrat);
   --color-primary: 79, 70, 229; /* indigo-600 */
   --color-secondary: 10, 102, 194; /* blue-700 */
   
@@ -14,12 +15,20 @@
 }
 
 .dark {
-  --color-primary: 99, 102, 241; /* indigo-500 in dark mode */
+  --color-primary: 79, 70, 229; /* indigo-600 */
   --color-secondary: 59, 130, 246; /* blue-500 in dark mode */
   
   /* Dark theme */
   --color-background: 17, 24, 39; /* gray-900 */
   --color-foreground: 255, 255, 255; /* white */
+}
+
+.text-primary {
+  color: rgb(var(--color-primary));
+}
+
+.bg-primary {
+  background-color: rgb(var(--color-primary));
 }
 
 @layer base {
