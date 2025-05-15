@@ -1,5 +1,5 @@
 // src/app/layout.tsx
-import { poppins } from '@/app/fonts';
+import { poppins } from '@/lib/fonts';
 import './globals.css';
 import type { Metadata } from 'next';
 import { ThemeProvider } from '@/components/common/ThemeProvider';
