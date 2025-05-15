@@ -23,6 +23,11 @@
   --color-foreground: 255, 255, 255; /* white */
 }
 
+:focus-visible {
+  outline: 2px solid rgb(var(--color-primary));
+  outline-offset: 2px;
+}
+
 .text-primary {
   color: rgb(var(--color-primary));
 }
@@ -36,4 +41,36 @@
     @apply bg-[rgb(var(--color-background))] text-[rgb(var(--color-foreground))];
     transition: background-color 0.2s, color 0.2s;
   }
+}
+
+/* Airbnb theme */
+.theme-airbnb {
+  /* Airbnb primary colors */
+  --color-primary: 255, 90, 95; /* Airbnb red */
+  --color-secondary: 0, 166, 153; /* Airbnb teal */
+  
+  /* Airbnb neutral colors */
+  --color-neutral-50: 247, 247, 247;
+  --color-neutral-100: 221, 221, 221;
+  --color-neutral-200: 187, 187, 187;
+  --color-neutral-300: 153, 153, 153;
+  --color-neutral-400: 118, 118, 118;
+  --color-neutral-500: 72, 72, 72;
+  --color-neutral-600: 68, 68, 68;
+  --color-neutral-700: 34, 34, 34;
+  --color-neutral-800: 34, 34, 34;
+  --color-neutral-900: 0, 0, 0;
+  
+  /* Typography adjustments */
+  font-feature-settings: "ss01" on, "ss02" on;
+  
+  /* Airbnb design system specifics */
+  --radius: 8px;
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Dark mode adjustments for Airbnb theme */
+.dark.theme-airbnb {
+  --color-primary: 255, 132, 136; /* Lighter Airbnb red for dark mode */
+  --color-secondary: 0, 206, 193; /* Lighter Airbnb teal for dark mode */
 }

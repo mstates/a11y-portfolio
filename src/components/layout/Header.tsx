@@ -1,7 +1,8 @@
 // src/components/layout/Header.tsx
 import Link from 'next/link';
 import { ThemeSwitcher } from '@/components/common/ThemeSwitcher';
-import { Bars3Icon } from '@heroicons/react/24/outline'; // For mobile menu button
+import BrandThemeSwitcher from '@/components/theme/BrandThemeSwitcher'; // Make sure this is imported
+import { Bars3Icon } from '@heroicons/react/24/outline';
 
 export default function Header() {
   return (
@@ -43,6 +44,7 @@ export default function Header() {
             </ul>
             
             <div className="flex items-center space-x-4">
+              <BrandThemeSwitcher /> {/* Add this line */}
               <ThemeSwitcher />
               {/* Mobile menu button */}
               <button

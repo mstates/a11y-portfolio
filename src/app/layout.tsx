@@ -3,10 +3,12 @@ import { poppins } from '@/lib/fonts';
 import './globals.css';
 import type { Metadata } from 'next';
 import { ThemeProvider } from '@/components/common/ThemeProvider';
+import { BrandThemeProvider } from '@/components/theme/BrandThemeProvider';
 import { ThemeScript } from '@/components/common/ThemeScript';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SkipLink from '@/components/a11y/SkipLink';
+import BrandThemeSwitcher from '@/components/theme/BrandThemeSwitcher';
 
 export const metadata: Metadata = {
   title: {
@@ -27,18 +29,20 @@ export default function RootLayout({
       <head>
         <ThemeScript />
       </head>
-      <body className='min-h-screen flex flex-col font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200'>
+      <body className='min-h-screen flex flex-col font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200 antialiased' data-theme-mode='light'>
         <ThemeProvider 
         attribute="class"
         defaultTheme="system"
         enableSystem
         >
+          <BrandThemeProvider>
           <SkipLink />
           <Header />
           <main id="main-content" className="flex-grow">
             {children}
           </main>
           <Footer />
+          </BrandThemeProvider>
         </ThemeProvider>
       </body>
     </html>
