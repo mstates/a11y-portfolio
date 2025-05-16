@@ -1,20 +1,31 @@
-// src/components/sections/HeroSection.tsx
 'use client';
 
 import Link from 'next/link';
 import { useBrand } from '@/contexts/BrandContext';
 import { heroContent } from '@/data/homeContent';
+import { useState, useEffect } from 'react';
 
 export default function HeroSection() {
   const { isAirbnb } = useBrand();
+  const [mounted, setMounted] = useState(false);
+
+  // Handle hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return `<div className="h-screen"></div>`; // Placeholder during hydration
+  }
+
   const content = isAirbnb ? heroContent.airbnb : heroContent.default;
   
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl">
           <span className="inline-block px-3 py-1 text-sm font-semibold rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mb-8">
-            {isAirbnb ? 'Accessibility & Belonging Expert' : 'Accessibility Engineering Leader'}
+            {content.tagline}
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-8 leading-tight">
             {content.title}
@@ -32,9 +43,11 @@ export default function HeroSection() {
                 isAirbnb 
                   ? 'bg-[#FF5A5F] hover:bg-[#FF385E]' 
                   : 'bg-indigo-600 hover:bg-indigo-700'
-              } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+              } focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                isAirbnb ? 'focus:ring-[#FF5A5F]' : 'focus:ring-indigo-500'
+              }`}
             >
-              My Experience
+              {isAirbnb ? 'My Accessibility Approach' : 'My Experience'}
             </Link>
             <Link
               href="/contact"

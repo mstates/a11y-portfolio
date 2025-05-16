@@ -12,44 +12,15 @@ import {
   PresentationChartLineIcon
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
+import HeroSection from '@/components/sections/HeroSection';
+
 
 export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800">
-        {/* Hero content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <span className="inline-block px-3 py-1 text-sm font-semibold rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mb-8">
-              Accessibility Engineering Leader
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-8 leading-tight">
-              Crafting Inclusive Systems with Precision and Empathy
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              Driving Impact for Billions of Users
-            </p>
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-10 max-w-3xl">
-              Leading accessibility transformation at Walmart–where every accessibility enhancement reaches a global audience of unprecedented scale. Building inclusive experiences isn't just about compliance–it's about creating technology that genuinely welcomes everyone.
-            </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-sm"
-              >
-                My Experience
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-sm"
-              >
-                Get In Touch
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
+
 
       {/* Impact Metrics */}
       <section className="py-16 bg-indigo-50 dark:bg-gray-900">

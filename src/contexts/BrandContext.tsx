@@ -12,7 +12,12 @@ interface BrandContextType {
   isAirbnb: boolean;
 }
 
-const BrandContext = createContext<BrandContextType | undefined>(undefined);
+const BrandContext = createContext<BrandContextType>({
+  brand: 'default',
+  setBrand: () => {},
+  isAirbnb: false
+});
+
 
 export function BrandProvider({ children }: { children: ReactNode }) {
   const [brand, setBrand] = useState<BrandTheme>('default');
@@ -32,8 +37,9 @@ export function BrandProvider({ children }: { children: ReactNode }) {
 
 export function useBrand() {
   const context = useContext(BrandContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useBrand must be used within a BrandProvider');
   }
   return context;
 }
+

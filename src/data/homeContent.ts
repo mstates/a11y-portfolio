@@ -2,11 +2,13 @@
 export const heroContent = {
   default: {
     title: "Crafting Inclusive Systems with Precision and Empathy",
+    tagline: "Hello world!",
     subtitle: "Driving Impact for Over a Billion Users",
     description: "Leading accessibility transformation at Walmart—where every accessibility enhancement reaches a global audience of unprecedented scale. Building inclusive experiences isn't just about compliance—it's about creating technology that genuinely welcomes everyone."
   },
   airbnb: {
     title: "Creating a World Where Everyone Belongs",
+    tagline: "Hello Airbnb!",
     subtitle: "Accessibility as the Foundation of Belonging",
     description: "Passionate about making Airbnb's mission of belonging a reality for all users—regardless of ability. My accessibility expertise can help ensure every host and guest can participate fully in the Airbnb community."
   }
