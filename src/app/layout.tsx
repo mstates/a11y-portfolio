@@ -1,14 +1,14 @@
 // src/app/layout.tsx
-import { poppins } from '@/lib/fonts';
 import './globals.css';
+import { poppins } from '@/lib/fonts';
 import type { Metadata } from 'next';
-import { ThemeProvider } from '@/components/common/ThemeProvider';
-import { BrandThemeProvider } from '@/components/theme/BrandThemeProvider';
-import { ThemeScript } from '@/components/common/ThemeScript';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import Logos from '@/components/layout/Logos';
 import SkipLink from '@/components/a11y/SkipLink';
+import Logos from '@/components/layout/Logos';
+import { ThemeProvider } from '@/components/common/ThemeProvider';
+import { ThemeScript } from '@/components/common/ThemeScript';
+import { BrandThemeProvider } from '@/components/theme/BrandThemeProvider';
 
 export const metadata: Metadata = {
   title: {
