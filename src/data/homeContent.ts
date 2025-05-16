@@ -1,5 +1,5 @@
 // src/data/homeContent.ts
-export const heroSection = {
+export const heroContent = {
   default: {
     title: "Crafting Inclusive Systems with Precision and Empathy",
     subtitle: "Driving Impact for Over a Billion Users",
@@ -12,7 +12,7 @@ export const heroSection = {
   }
 };
 
-export const lookingForSection = {
+export const lookingForContent = {
   default: {
     title: "What I'm Looking For",
     content: "I'm seeking a team that values accessibility as a foundational principle—not just a compliance checkbox. An environment where inclusive design drives innovation rather than constraining it.\n\nMy current work at Walmart spans the entire accessibility ecosystem: from strategic leadership and architectural decisions to hands-on implementation and cultural transformation. I've built systems that scale across thousands of developers and billions of users.\n\nI bring executive-level accessibility perspective combined with practical engineering experience—a unique combination that helps organizations embed accessibility into their DNA rather than treating it as a surface-level concern.\n\nRemote or hybrid roles welcome (SF Bay Area available for hybrid). I'm interested in meaningful conversations about building truly inclusive digital products."
@@ -23,7 +23,7 @@ export const lookingForSection = {
   }
 };
 
-export const whoIAmSection = {
+export const whoIAmContent = {
   default: {
     title: "Who I Am",
     intro: "I embed accessibility into the DNA of products, teams, and organizations—crafting scalable systems that welcome every user, everywhere with intention and empathy.",
@@ -62,7 +62,7 @@ export const whoIAmSection = {
   }
 };
 
-export const ctaSection = {
+export const ctaContent = {
   default: {
     title: "Ready to Elevate Your Organization's Accessibility Practice?",
     description: "Let's discuss how my unique combination of strategic leadership and technical expertise can help your team create digital experiences that truly welcome everyone.",

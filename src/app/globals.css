@@ -74,3 +74,20 @@
   --color-primary: 255, 132, 136; /* Lighter Airbnb red for dark mode */
   --color-secondary: 0, 206, 193; /* Lighter Airbnb teal for dark mode */
 }
+
+/* Airbnb-specific styles */
+.airbnb-theme button.primary {
+  @apply bg-[#FF5A5F] hover:bg-[#FF385C];
+}
+
+.airbnb-theme .text-accent {
+  @apply text-[#FF5A5F];
+}
+
+.airbnb-theme .bg-accent {
+  @apply bg-[#FF5A5F];
+}
+
+.airbnb-theme .border-accent {
+  @apply border-[#FF5A5F];
+}

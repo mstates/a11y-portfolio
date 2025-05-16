@@ -6,9 +6,9 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SkipLink from '@/components/a11y/SkipLink';
 import Logos from '@/components/layout/Logos';
-import { ThemeProvider } from '@/components/common/ThemeProvider';
 import { ThemeScript } from '@/components/common/ThemeScript';
-import { BrandThemeProvider } from '@/components/theme/BrandThemeProvider';
+import { ThemeProvider } from '@/components/common/ThemeProvider';
+import { BrandProvider } from '@/contexts/BrandContext';
 
 export const metadata: Metadata = {
   title: {
@@ -30,12 +30,8 @@ export default function RootLayout({
         <ThemeScript />
       </head>
       <body className='min-h-screen flex flex-col font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200 antialiased' data-theme-mode='light'>
-        <ThemeProvider 
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        >
-          <BrandThemeProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <BrandProvider>
           <SkipLink />
           <Header />
           <main id="main-content" className="flex-grow">
@@ -43,7 +39,7 @@ export default function RootLayout({
           </main>
           <Logos />
           <Footer />
-          </BrandThemeProvider>
+          </BrandProvider>
         </ThemeProvider>
       </body>
     </html>

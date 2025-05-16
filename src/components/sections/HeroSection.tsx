@@ -2,19 +2,19 @@
 'use client';
 
 import Link from 'next/link';
-import { useThemeContext } from '@/components/theme/ThemeContext';
-import { heroSection } from '@/data/homeContent';
+import { useBrand } from '@/contexts/BrandContext';
+import { heroContent } from '@/data/homeContent';
 
 export default function HeroSection() {
-  const { isAirbnbVariant } = useThemeContext();
-  const content = isAirbnbVariant ? heroSection.airbnb : heroSection.default;
+  const { isAirbnb } = useBrand();
+  const content = isAirbnb ? heroContent.airbnb : heroContent.default;
   
   return (
     <section className="py-20 md:py-28 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl">
           <span className="inline-block px-3 py-1 text-sm font-semibold rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 mb-8">
-            {isAirbnbVariant ? 'Accessibility & Belonging Expert' : 'Accessibility Engineering Leader'}
+            {isAirbnb ? 'Accessibility & Belonging Expert' : 'Accessibility Engineering Leader'}
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-8 leading-tight">
             {content.title}
@@ -29,12 +29,12 @@ export default function HeroSection() {
             <Link
               href="/about"
               className={`inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white shadow-sm ${
-                isAirbnbVariant 
-                  ? 'bg-[#FF5A5F] hover:bg-[#FF385E] focus:ring-[#FF5A5F]' 
-                  : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'
-              } focus:outline-none focus:ring-2 focus:ring-offset-2`}
+                isAirbnb 
+                  ? 'bg-[#FF5A5F] hover:bg-[#FF385E]' 
+                  : 'bg-indigo-600 hover:bg-indigo-700'
+              } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
             >
-              {isAirbnbVariant ? 'My Experience' : 'My Experience'}
+              My Experience
             </Link>
             <Link
               href="/contact"
