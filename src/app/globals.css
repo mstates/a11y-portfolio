@@ -23,11 +23,6 @@
   --color-foreground: 255, 255, 255; /* white */
 }
 
-:focus-visible {
-  outline: 2px solid rgb(var(--color-primary));
-  outline-offset: 2px;
-}
-
 .text-primary {
   color: rgb(var(--color-primary));
 }
@@ -90,4 +85,29 @@
 
 .airbnb-theme .border-accent {
   @apply border-[#FF5A5F];
+}
+
+
+
+/* Enhanced focus styles for brand switcher */
+.brand-switcher-option:focus-visible {
+  @apply outline-none ring-2 ring-offset-2;
+}
+
+.brand-option-default:focus-visible {
+  @apply ring-indigo-500 dark:ring-indigo-400;
+}
+
+.brand-option-airbnb:focus-visible {
+  @apply ring-[#FF5A5F];
+}
+
+/* Active state styling */
+.brand-option-active {
+  @apply relative z-10;
+}
+
+/* Custom pill background transition */
+.brand-pill-transition {
+  @apply absolute inset-0 transition-transform duration-300 ease-in-out;
 }

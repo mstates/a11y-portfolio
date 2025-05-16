@@ -9,13 +9,12 @@ export default function HeroSection() {
   const { isAirbnb } = useBrand();
   const [mounted, setMounted] = useState(false);
 
-  // Handle hydration
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) {
-    return `<div className="h-screen"></div>`; // Placeholder during hydration
+    return null;
   }
 
   const content = isAirbnb ? heroContent.airbnb : heroContent.default;

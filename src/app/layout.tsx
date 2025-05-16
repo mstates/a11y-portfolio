@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SkipLink from '@/components/a11y/SkipLink';
 import Logos from '@/components/layout/Logos';
+import BrandIndicator from '@/components/layout/BrandIndicator';
 import { ThemeScript } from '@/components/common/ThemeScript';
 import { ThemeProvider } from '@/components/common/ThemeProvider';
 import { BrandProvider } from '@/contexts/BrandContext';
@@ -39,6 +40,7 @@ export default function RootLayout({
           </main>
           <Logos />
           <Footer />
+          <BrandIndicator />
           </BrandProvider>
         </ThemeProvider>
       </body>
