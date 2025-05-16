@@ -7,8 +7,8 @@ import { BrandThemeProvider } from '@/components/theme/BrandThemeProvider';
 import { ThemeScript } from '@/components/common/ThemeScript';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import Logos from '@/components/layout/Logos';
 import SkipLink from '@/components/a11y/SkipLink';
-import BrandThemeSwitcher from '@/components/theme/BrandThemeSwitcher';
 
 export const metadata: Metadata = {
   title: {
@@ -41,6 +41,7 @@ export default function RootLayout({
           <main id="main-content" className="flex-grow">
             {children}
           </main>
+          <Logos />
           <Footer />
           </BrandThemeProvider>
         </ThemeProvider>
