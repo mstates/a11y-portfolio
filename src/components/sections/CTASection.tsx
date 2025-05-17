@@ -16,20 +16,18 @@ export default function CTASection() {
   }, []);
 
   if (!mounted) {
-    return null;
+    return <div className="h-64 bg-indigo-600 dark:bg-indigo-800"/>; // Placeholder during hydration
   }
 
   const content = isAirbnb ? ctaContent.airbnb : ctaContent.default;
   
   return (
-    <section className={`py-16 ${
-      isAirbnb ? 'bg-[#FF5A5F] dark:bg-[#E00B41]' : 'bg-indigo-600 dark:bg-indigo-800'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl font-bold text-white mb-6">
+    <section className={isAirbnb ? 'cta-section cta-section-airbnb' : 'cta-section cta-section-default'}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-white mb-6 content-fade">
           {content.title}
         </h2>
-        <p className="text-xl text-white opacity-90 max-w-3xl mx-auto mb-8">
+        <p className="text-xl text-white opacity-90 max-w-3xl mx-auto mb-8 content-fade">
           {content.description}
         </p>
         <Link
