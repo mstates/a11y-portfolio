@@ -1,38 +1,48 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* Base styles for light/dark mode */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #4f46e5;
+}
 
-@layer base {
-  :root {
-    --font-sans: var(--font-poppins);
-    --font-heading: var(--font-montserrat);
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
-  }
+.dark {
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+  --primary-color: #6366f1;
+}
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --foreground-rgb: 255, 255, 255;
-      --background-start-rgb: 0, 0, 0;
-      --background-end-rgb: 0, 0, 0;
-    }
-  }
-
-  body {
-    color: rgb(var(--foreground-rgb));
-    background-color: #ffffff;
-  }
-
-  .dark body {
-    background-color: #1a1a1a;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
+/* Theme configuration */
+@theme {
+  colors {
+    background: var(--background-color);
+    text: var(--text-color);
+    primary: var(--primary-color);
+    
+    /* Airbnb colors */
+    airbnb-red: #FF5A5F;
+    airbnb-pink: #FF385C;
+    airbnb-dark-red: #D93B40;
+    airbnb-light-red: #FFF0F0;
   }
 }
 
+/* Base styles */
+@layer base {
+  body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Component styles */
 @layer components {
   /* Badge Components */
   .badge {
@@ -53,15 +63,15 @@
   }
   
   .btn-primary {
-    @apply btn bg-indigo-600 hover:bg-indigo-700 text-white border border-transparent focus:ring-indigo-500;
+    @apply btn bg-indigo-600 hover:bg-indigo-700 text-white border-transparent focus:ring-indigo-500;
   }
   
   .btn-primary-airbnb {
-    @apply btn bg-[#FF5A5F] hover:bg-[#FF385E] text-white border border-transparent focus:ring-[#FF5A5F];
+    @apply btn bg-[#FF5A5F] hover:bg-[#FF385E] text-white border-transparent focus:ring-[#FF5A5F];
   }
   
   .btn-secondary {
-    @apply btn bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-gray-500;
+    @apply btn bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-gray-500;
   }
   
   /* Card Components */
@@ -149,7 +159,7 @@
 }
 
 /* Airbnb theme colors for quick reference */
-.text-airbnb { @apply text-[#FF5A5F]; }
-.bg-airbnb { @apply bg-[#FF5A5F]; }
-.border-airbnb { @apply border-[#FF5A5F]; }
-.hover-airbnb { @apply hover:text-[#FF5A5F]; }
+.text-airbnb { color: #FF5A5F; }
+.bg-airbnb { background-color: #FF5A5F; }
+.border-airbnb { border-color: #FF5A5F; }
+.hover-airbnb:hover { color: #FF5A5F; }

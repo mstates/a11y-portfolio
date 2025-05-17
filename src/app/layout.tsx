@@ -1,23 +1,26 @@
 // src/app/layout.tsx
 import './globals.css';
-import { poppins } from '@/lib/fonts';
 import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SkipLink from '@/components/a11y/SkipLink';
-import Logos from '@/components/layout/Logos';
-import BrandIndicator from '@/components/layout/BrandIndicator';
-import { ThemeScript } from '@/components/common/ThemeScript';
-import { ThemeProvider } from '@/components/common/ThemeProvider';
+import { ThemeProvider } from 'next-themes';
 import { BrandProvider } from '@/contexts/BrandContext';
+
+// Load Poppins font
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
+});
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Michael States',
-    default: 'Michael States - Accessibility Portfolio',
+    template: '%s | Accessibility Portfolio',
+    default: 'Accessibility Portfolio',
   },
-  description: 'A showcase of accessible web design and development by Michael States',
-  metadataBase: new URL('https://michaelstates.com'),
+  description: 'A showcase of accessible web design and development',
 };
 
 export default function RootLayout({
@@ -26,21 +29,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={poppins.variable} suppressHydrationWarning>
-      <head>
-        <ThemeScript />
-      </head>
-      <body className='min-h-screen flex flex-col font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200 antialiased' data-theme-mode='light'>
+    <html lang="en" suppressHydrationWarning className={poppins.variable}>
+      <body className={`min-h-screen flex flex-col ${poppins.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <BrandProvider>
-          <SkipLink />
-          <Header />
-          <main id="main-content" className="flex-grow">
-            {children}
-          </main>
-          <Logos />
-          <Footer />
-          <BrandIndicator />
+            <SkipLink />
+            <Header />
+            <main id="main-content" className="flex-grow">
+              {children}
+            </main>
+            <Footer />
           </BrandProvider>
         </ThemeProvider>
       </body>

@@ -16,7 +16,7 @@ export default function HeroSection() {
   }, []);
 
   if (!mounted) {
-    return <div className="h-screen"></div>; // Placeholder during hydration
+    return <div className="h-screen"/>; // Placeholder during hydration
   }
 
   const content = isAirbnb ? heroContent.airbnb : heroContent.default;
