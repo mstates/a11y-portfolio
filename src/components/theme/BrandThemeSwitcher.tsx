@@ -33,7 +33,7 @@ export default function BrandThemeSwitcher() {
               className={`
                 relative px-4 py-2 text-sm rounded-md cursor-pointer transition-all duration-200
                 ${checked 
-                  ? 'text-indigo-700 dark:text-indigo-300 font-medium' 
+                  ? 'text-indigo-700 dark:text-indigo-300' 
                   : 'text-gray-600 dark:text-gray-400'
                 }
               `}
@@ -67,8 +67,8 @@ export default function BrandThemeSwitcher() {
               className={`
                 relative px-4 py-2 text-sm rounded-md cursor-pointer transition-all duration-200
                 ${checked 
-                  ? 'text-[#FF5A5F] font-medium' 
-                  : 'text-gray-600 dark:text-gray-400'
+                  ? 'text-[#FF5A5F] underline' 
+                  : 'text-gray-600 underline dark:text-gray-400'
                 }
               `}
             >
@@ -85,7 +85,7 @@ export default function BrandThemeSwitcher() {
               {/* Focus ring */}
               {active && (
                 <span 
-                  className="absolute -inset-1 rounded-lg ring-2 ring-[#FF5A5F]"
+                  className="border-1 border-black absolute -inset-1 rounded-lg ring-2 ring-offset-2 ring-black"
                   aria-hidden="true"
                 />
               )}

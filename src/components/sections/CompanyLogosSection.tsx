@@ -31,7 +31,7 @@ export default function CompanyLogosSection() {
           {content.companies.map((company) => (
             <div 
               key={company.name} 
-              className="w-32 h-16 relative filter grayscale dark:invert hover:grayscale-0 transition-all duration-300"
+              className="w-32 h-16 relative filter dark:invert hover:grayscale-0 transition-all duration-300"
               aria-label={company.name}
             >
               <Image
