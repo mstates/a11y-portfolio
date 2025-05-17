@@ -1,9 +1,9 @@
 'use client';
 
-import Link from 'next/link';
 import { useBrand } from '@/contexts/BrandContext';
-import { heroContent } from '@/data/homeContent';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { heroContent } from '@/data/homeContent';
 
 export default function HeroSection() {
   const { isAirbnb } = useBrand();
@@ -14,16 +14,15 @@ export default function HeroSection() {
   }, []);
 
   if (!mounted) {
-    return null;
+    return <div className="h-screen"/>;
   }
 
   const content = isAirbnb ? heroContent.airbnb : heroContent.default;
   
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl">
-          <span className={`inline-block px-3 py-1 text-sm font-medium rounded-full dark:bg-indigo-900 dark:text-indigo-200 border mb-6 ${
+    <section className="hero-section bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <div className="section-container">
+          <span className={`inline-block px-3 py-1 text-sm font-medium rounded-xl dark:bg-indigo-900 dark:text-white border mb-6 ${
                 isAirbnb 
                   ? 'bg-[#FFF0F0] dark:border-gray-100' 
                   : 'bg-indigo-50'
@@ -31,13 +30,13 @@ export default function HeroSection() {
             >
             {content.tagline}
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-8 leading-tight">
+          <h1>
             {content.title}
           </h1>
-          <h2 className="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+          <h2>
             {content.subtitle}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-10 max-w-3xl">
+          <p>
             {content.description}
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
@@ -66,7 +65,6 @@ export default function HeroSection() {
               Get In Touch
             </Link>
           </div>
-        </div>
       </div>
     </section>
   );

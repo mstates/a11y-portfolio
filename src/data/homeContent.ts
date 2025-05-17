@@ -6,7 +6,7 @@ export const heroContent = {
     description: "Currently leading accessibility strategy at Walmart—the Fortune 1 company—where I shape scalable, inclusive experiences across web, mobile, and native platforms."
   },
   airbnb: {
-    tagline: "Staff Web Engineer · Digital Accessibility Specialist",
+    tagline: "Staff Level Web Engineer · Digital Accessibility Specialist",
     title: "Creating a World Where Everyone Belongs",
     subtitle: "Engineering Accessible Systems at Scale",
     description: "Passionate about aligning Airbnb's mission of belonging with accessibility excellence—ensuring every host and guest can fully participate in the Airbnb community. Specialized in building tooling, integrating automated testing, and establishing accessibility best practices throughout the product development lifecycle."

@@ -1,9 +1,9 @@
 // src/components/layout/BrandThemeSwitcher.tsx
 'use client';
 
+import { Radio, RadioGroup } from '@headlessui/react';
 import { useBrand } from '@/contexts/BrandContext';
 import { useState, useEffect } from 'react';
-import { RadioGroup } from '@headlessui/react';
 
 export default function BrandThemeSwitcher() {
   const { brand, setBrand } = useBrand();
@@ -18,92 +18,40 @@ export default function BrandThemeSwitcher() {
     return null;
   }
 
+  const options = [
+    { id: 'default', name: 'Default' },
+    { id: 'airbnb', name: 'Airbnb' }
+  ];
+
   return (
     <RadioGroup 
       value={brand} 
       onChange={setBrand} 
-      className="relative inline-flex rounded-lg p-1 bg-gray-100 dark:bg-gray-800"
+      aria-label="Target audience"
+      className="inline-flex rounded-full p-1 bg-gray-100 dark:bg-gray-800"
     >
-      <RadioGroup.Label className="sr-only">Brand Theme</RadioGroup.Label>
-      
-      {/* Default Option */}
-      <RadioGroup.Option value="default" className="focus:outline-none z-10">
-          {({ checked, active }) => (
-            <div
-              className={`
-                relative px-4 py-2 text-sm rounded-md cursor-pointer transition-all duration-200
-                ${checked 
-                  ? 'text-indigo-700 dark:text-indigo-300' 
-                  : 'text-gray-600 dark:text-gray-400'
-                }
-              `}
-            >
-              <span className={`relative z-10 ${active ? 'underline' : ''}`}>Default</span>
-              
-              {/* Background for selected state */}
-              {checked && (
-                <span 
-                  className="absolute inset-0 bg-white dark:bg-gray-700 rounded-md shadow-sm"
-                  aria-hidden="true"
-                />
-              )}
-              
-              {/* Focus ring */}
-              {active && (
-                <span 
-                  className="absolute -inset-1 rounded-lg ring-2 ring-indigo-500 dark:ring-indigo-400"
-                  aria-hidden="true"
-                />
-              )}
-            </div>
-          )}
-        </RadioGroup.Option>
-
-      
-      {/* Airbnb Option */}
-      <RadioGroup.Option value="airbnb" className="focus:outline-none z-10">
-          {({ checked, active }) => (
-            <div
-              className={`
-                relative px-4 py-2 text-sm rounded-md cursor-pointer transition-all duration-200
-                ${checked 
-                  ? 'text-[#FF5A5F] underline' 
-                  : 'text-gray-600 underline dark:text-gray-400'
-                }
-              `}
-            >
-              <span className={`relative z-10 ${active ? 'underline' : ''}`}>Airbnb</span>
-              
-              {/* Background for selected state */}
-              {checked && (
-                <span 
-                  className="absolute inset-0 bg-white dark:bg-gray-700 rounded-md shadow-sm"
-                  aria-hidden="true"
-                />
-              )}
-              
-              {/* Focus ring */}
-              {active && (
-                <span 
-                  className="border-1 border-black absolute -inset-1 rounded-lg ring-2 ring-offset-2 ring-black"
-                  aria-hidden="true"
-                />
-              )}
-            </div>
-          )}
-        </RadioGroup.Option>
-
-      
-      {/* Active Background Pill - Optional for more sophisticated animation */}
-      <span 
-        className={`
-          absolute inset-0 pointer-events-none transition-all duration-200 ease-in-out
-          ${brand === 'default' ? 'translate-x-0' : 'translate-x-full'}
-        `}
-        aria-hidden="true"
-      >
-        <span className="h-full w-1/2 rounded-full bg-white dark:bg-gray-700 shadow-sm opacity-0"/>
-      </span>
+      <div className="flex">
+        {options.map((option) => (
+          <Radio
+            key={option.id}
+            value={option.id}
+            className={({ checked, focus }) => `
+              relative rounded-full px-4 py-2 cursor-pointer text-sm transition-colors duration-200
+              focus:not-data-focus:outline-none
+              ${checked 
+                ? option.id === 'airbnb'
+                  ? 'bg-white dark:bg-gray-700 text-[#FF5A5F] font-medium shadow-sm border-1' 
+                  : 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium shadow-sm border-1'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+              }
+              ${focus ? 'outline-2 outline-offset-2 outline-indigo-500 dark:outline-indigo-400 ring-2 ring-offset-2' : ''}
+              ${option.id === 'airbnb' && focus ? 'outline-[#FF5A5F]' : ''}
+            `}
+          >
+            {option.name}
+          </Radio>
+        ))}
+      </div>
     </RadioGroup>
   );
 }

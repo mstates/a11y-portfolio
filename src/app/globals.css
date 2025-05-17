@@ -31,83 +31,38 @@
   background-color: rgb(var(--color-primary));
 }
 
-@layer base {
-  body {
-    @apply bg-[rgb(var(--color-background))] text-[rgb(var(--color-foreground))];
-    transition: background-color 0.2s, color 0.2s;
+h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-gray-900 dark:text-white leading-tight;
+}
+
+h2 {
+    @apply text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white;
   }
-}
-
-/* Airbnb theme */
-.theme-airbnb {
-  /* Airbnb primary colors */
-  --color-primary: 255, 90, 95; /* Airbnb red */
-  --color-secondary: 0, 166, 153; /* Airbnb teal */
   
-  /* Airbnb neutral colors */
-  --color-neutral-50: 247, 247, 247;
-  --color-neutral-100: 221, 221, 221;
-  --color-neutral-200: 187, 187, 187;
-  --color-neutral-300: 153, 153, 153;
-  --color-neutral-400: 118, 118, 118;
-  --color-neutral-500: 72, 72, 72;
-  --color-neutral-600: 68, 68, 68;
-  --color-neutral-700: 34, 34, 34;
-  --color-neutral-800: 34, 34, 34;
-  --color-neutral-900: 0, 0, 0;
+  h3 {
+    @apply text-xl md:text-2xl font-semibold mb-3 text-gray-900 dark:text-white;
+  }
   
-  /* Typography adjustments */
-  font-feature-settings: "ss01" on, "ss02" on;
+  p {
+    @apply text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed;
+  }
+
+
+
   
-  /* Airbnb design system specifics */
-  --radius: 8px;
-  --shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
+.section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16;
+  }
 
-/* Dark mode adjustments for Airbnb theme */
-.dark.theme-airbnb {
-  --color-primary: 255, 132, 136; /* Lighter Airbnb red for dark mode */
-  --color-secondary: 0, 206, 193; /* Lighter Airbnb teal for dark mode */
-}
-
-/* Airbnb-specific styles */
-.airbnb-theme button.primary {
-  @apply bg-[#FF5A5F] hover:bg-[#FF385C];
-}
-
-.airbnb-theme .text-accent {
-  @apply text-[#FF5A5F];
-}
-
-.airbnb-theme .bg-accent {
-  @apply bg-[#FF5A5F];
-}
-
-.airbnb-theme .border-accent {
-  @apply border-[#FF5A5F];
-}
+.hero-section {
+    @apply py-20 md:py-28;
+  }
 
 
 
-/* Enhanced focus styles for brand switcher */
-.brand-switcher-option:focus-visible {
-  @apply outline-none ring-2 ring-offset-2;
-}
 
-.brand-option-default:focus-visible {
-  @apply ring-indigo-500 dark:ring-indigo-400;
-}
 
-.brand-option-airbnb:focus-visible {
-  @apply ring-[#FF5A5F];
-}
 
-/* Active state styling */
-.brand-option-active {
-  @apply relative z-10;
-}
 
-/* Custom pill background transition */
-.brand-pill-transition {
-  @apply absolute inset-0 transition-transform duration-300 ease-in-out;
-}
+
+
