@@ -1,31 +1,19 @@
+/* src/app/globals.css */
 @import "tailwindcss";
 
-/* Base styles for light/dark mode */
+/* Base styles for light/dark mode using CSS custom properties */
 :root {
   --background-color: #ffffff;
   --text-color: #000000;
   --primary-color: #4f46e5;
+  --airbnb-red: #FF5A5F;
+  --airbnb-pink: #FF385C;
 }
 
 .dark {
   --background-color: #1a1a1a;
   --text-color: #ffffff;
   --primary-color: #6366f1;
-}
-
-/* Theme configuration */
-@theme {
-  colors {
-    background: var(--background-color);
-    text: var(--text-color);
-    primary: var(--primary-color);
-    
-    /* Airbnb colors */
-    airbnb-red: #FF5A5F;
-    airbnb-pink: #FF385C;
-    airbnb-dark-red: #D93B40;
-    airbnb-light-red: #FFF0F0;
-  }
 }
 
 /* Base styles */
@@ -54,7 +42,9 @@
   }
   
   .badge-airbnb {
-    @apply bg-[#FFF0F0] text-[#FF5A5F] border border-[#FFCCCF];
+    background-color: var(--airbnb-light-red);
+    color: var(--airbnb-red);
+    border: 1px solid rgba(255, 92, 95, 0.3);
   }
   
   /* Button Components */
@@ -67,7 +57,16 @@
   }
   
   .btn-primary-airbnb {
-    @apply btn bg-[#FF5A5F] hover:bg-[#FF385E] text-white border-transparent focus:ring-[#FF5A5F];
+    @apply btn border-transparent text-white focus:ring-offset-2;
+    background-color: var(--airbnb-red);
+  }
+  
+  .btn-primary-airbnb:hover {
+    background-color: var(--airbnb-pink);
+  }
+  
+  .btn-primary-airbnb:focus {
+    --tw-ring-color: var(--airbnb-red);
   }
   
   .btn-secondary {
@@ -80,7 +79,8 @@
   }
   
   .card-airbnb {
-    @apply bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-[#FF5A5F] border-opacity-10;
+    @apply bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md;
+    border: 1px solid rgba(255, 90, 95, 0.1);
   }
   
   /* Role Components */
@@ -89,7 +89,14 @@
   }
   
   .role-icon-container-airbnb {
-    @apply flex-shrink-0 mr-4 w-12 h-12 rounded-full flex items-center justify-center bg-[#FFF0F0] dark:bg-[#661F22] text-[#FF5A5F] dark:text-[#FF8A8F];
+    @apply flex-shrink-0 mr-4 w-12 h-12 rounded-full flex items-center justify-center;
+    background-color: var(--airbnb-light-red);
+    color: var(--airbnb-red);
+  }
+  
+  .dark .role-icon-container-airbnb {
+    background-color: #661F22;
+    color: #FF8A8F;
   }
   
   /* Layout Components */
@@ -112,7 +119,8 @@
   }
   
   .stat-number-airbnb {
-    @apply text-4xl md:text-5xl font-bold mb-2 text-[#FF5A5F];
+    @apply text-4xl md:text-5xl font-bold mb-2;
+    color: var(--airbnb-red);
   }
   
   .stat-label {
@@ -129,7 +137,8 @@
   }
   
   .cta-section-airbnb {
-    @apply bg-[#FF5A5F] text-white;
+    background-color: var(--airbnb-red);
+    color: white;
   }
 }
 
@@ -159,7 +168,7 @@
 }
 
 /* Airbnb theme colors for quick reference */
-.text-airbnb { color: #FF5A5F; }
-.bg-airbnb { background-color: #FF5A5F; }
-.border-airbnb { border-color: #FF5A5F; }
-.hover-airbnb:hover { color: #FF5A5F; }
+.text-airbnb { color: var(--airbnb-red); }
+.bg-airbnb { background-color: var(--airbnb-red); }
+.border-airbnb { border-color: var(--airbnb-red); }
+.hover-airbnb:hover { color: var(--airbnb-red); }
