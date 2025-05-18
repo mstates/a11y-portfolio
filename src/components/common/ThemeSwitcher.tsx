@@ -1,50 +1,67 @@
-// src/components/layout/Header.tsx
-import Link from 'next/link';
-import { ThemeSwitcher } from '@/components/common/ThemeSwitcher';
+// src/components/common/ThemeSwitcher.tsx
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
+import { Radio, RadioGroup, Label } from '@headlessui/react';
+import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
+
+const themes = [
+  { id: 'light', name: 'Light', icon: SunIcon },
+  { id: 'system', name: 'System', icon: ComputerDesktopIcon },
+  { id: 'dark', name: 'Dark', icon: MoonIcon },
+];
+
+export function ThemeSwitcher() {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+  
+  // Find the current theme object
+  const currentTheme = themes.find(t => t.id === theme) || themes[0];
+
+  // Prevent hydration issues
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="h-10 bg-transparent w-36" aria-hidden="true" />;
+  }
 
 export default function Header() {
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <nav className="flex items-center justify-between" aria-label="Main Navigation">
-          <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-indigo-600 dark:text-indigo-400" aria-label="Home">
-              Michael States
-            </Link>
-          </div>
-          
-          <div className="flex items-center space-x-8">
-            <ul className="hidden md:flex space-x-8">
-              <li>
-                <Link 
-                  href="/" 
-                  className="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/about" 
-                  className="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/contact" 
-                  className="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-            
-            <ThemeSwitcher />
-          </div>
-        </nav>
+    <RadioGroup value={currentTheme} onChange={(option) => setTheme(option.id)}>
+      <Label className="sr-only">Theme</Label>
+      <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-lg">
+        {themes.map((option) => {
+          const Icon = option.icon;
+          return (
+            <Radio
+              key={option.id}
+              value={option}
+              className={({ checked }) => `
+                ${checked ? 'bg-indigo-600 dark:bg-indigo-300 shadow-sm' : ''}
+                relative rounded-md cursor-pointer p-2 flex items-center justify-center
+                focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
+              `}
+            >
+              {({ checked }) => (
+                <>
+                  <Icon 
+                    className={`h-5 w-5 ${
+                      checked 
+                        ? 'text-white dark:text-indigo-900' 
+                        : 'text-gray-500 dark:text-gray-200'
+                    }`} 
+                    aria-hidden="true" 
+                  />
+                  <span className="sr-only">{option.name}</span>
+                </>
+              )}
+            </Radio>
+          );
+        })}
       </div>
-    </header>
+    </RadioGroup>
   );
 }

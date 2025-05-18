@@ -1,18 +1,14 @@
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
+  // In Tailwind 4, content paths are often auto-detected
   darkMode: 'class',
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
   theme: {
     extend: {
-      colors: {
-        primary: 'rgb(var(--color-primary) / <alpha-value>)',
-        // Add more colors as needed
-      },
       fontFamily: {
-        sans: ['var(--font-poppins)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-poppins)', 'sans-serif'],
       },
     },
   },
-};
+  plugins: [],
+}
