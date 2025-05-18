@@ -23,7 +23,7 @@ export default function Header() {
               <li>
                 <Link 
                   href="/" 
-                  className="text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors px-1 py-1 text-base font-medium"
+                  className="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                 >
                   Home
                 </Link>
@@ -31,7 +31,7 @@ export default function Header() {
               <li>
                 <Link 
                   href="/about" 
-                  className="text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors px-1 py-1 text-base font-medium"
+                  className="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                 >
                   About
                 </Link>
@@ -39,13 +39,12 @@ export default function Header() {
               <li>
                 <Link 
                   href="/contact" 
-                  className="text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors px-1 py-1 text-base font-medium"
+                  className="text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                 >
                   Contact
                 </Link>
               </li>
             </ul>
-            
             <div className="flex items-center space-x-4">
               <BrandThemeSwitcher /> {/* Add this line */}
               <ThemeSwitcher />
