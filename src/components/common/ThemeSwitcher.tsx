@@ -28,7 +28,6 @@ export function ThemeSwitcher() {
     return <div className="h-10 bg-transparent w-36" aria-hidden="true" />;
   }
 
-export default function Header() {
   return (
     <RadioGroup value={currentTheme} onChange={(option) => setTheme(option.id)}>
       <Label className="sr-only">Theme</Label>
