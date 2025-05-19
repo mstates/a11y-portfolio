@@ -30,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={poppins.variable}>
-      <body className={`min-h-screen flex flex-col ${poppins.className}`}>
+      <body className={`min-h-screen font-sans antialiased bg-white dark:bg-gray-950 dark:text-gray-100 ${poppins.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <BrandProvider>
             <SkipLink />

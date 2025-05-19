@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 
+
 export default function HeroSection() {
   const { isAirbnb } = useBrand();
   const [mounted, setMounted] = useState(false);

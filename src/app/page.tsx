@@ -11,6 +11,7 @@ import LookingForSection from '@/components/sections/LookingForSection';
 import WhoIAmSection from '@/components/sections/WhoIAmSection';
 import CTASection from '@/components/sections/CTASection';
 
+
 export default function HomePage() {
   return (
     <div className="flex flex-col">
