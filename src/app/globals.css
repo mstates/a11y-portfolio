@@ -49,13 +49,13 @@
   
   /* Button Components */
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-md shadow-sm;
+    @apply inline-flex focus:outline-2 focus:outline-offset-4 items-center justify-center px-6 py-3 text-base font-medium rounded-md shadow-sm;
     transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
   }
   
   .btn-primary {
+    @apply text-white;
     background-color: var(--primary-color);
-    color: white;
   }
   
   .btn-primary:hover {
@@ -76,13 +76,12 @@
   
   .btn-primary-airbnb:hover {
     background-color: var(--airbnb-pink);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    @apply shadow-lg -translate-y-px;
   }
   
   .btn-primary-airbnb:active {
     transform: translateY(0);
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    @apply shadow-lg;
   }
   
   .btn-secondary {

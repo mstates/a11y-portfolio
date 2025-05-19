@@ -8,8 +8,8 @@ import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/outl
 
 // Define the theme options
 const themes = [
-  { id: 'light', name: 'Light', icon: SunIcon },
   { id: 'system', name: 'System', icon: ComputerDesktopIcon },
+  { id: 'light', name: 'Light', icon: SunIcon },
   { id: 'dark', name: 'Dark', icon: MoonIcon },
 ];
 
@@ -28,13 +28,12 @@ export default function ThemeSwitcher() {
 
   // Default to 'system' if theme is not set
   const currentTheme = theme || 'system';
-
   return (
     <RadioGroup 
       value={currentTheme} 
       onChange={setTheme} 
       aria-label="Theme preference"
-      className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-lg"
+      className="relative inline-grid grid-cols-3 gap-4 rounded-full bg-gray-950/8 dark:bg-white/10 dark:text-white p-1"
     >
       {themes.map((themeOption) => {
         const Icon = themeOption.icon;
@@ -42,12 +41,10 @@ export default function ThemeSwitcher() {
           <Field key={themeOption.id} className="flex items-center">
             <Radio
               value={themeOption.id}
-              className="data-checked:bg-pink-400 data-hover:bg-gray-300 data-checked:shadow-sm
-                         data-focus:ring-2 data-focus:ring-indigo-500 data-focus:ring-offset-2 dark:data-focus:ring-offset-gray-800
-                         relative w-10 h-10 rounded-md cursor-pointer flex items-center justify-center"
+              className="*:size-6 rounded-full outline-transparent data-focus:dark:bg-white outline-2 outline-offset-1 data-focus:dark:outline-white data-checked:outline-gray-900 data-checked:bg-white data-focus:ring-2 data-checked:ring-offset-4 sm:p-0 dark:data-checked:text-black dark:data-focus:ring-pink-500"
             >
               <Icon 
-                className="data-checked:text-white text-black dark:text-white h-5 w-5  data-not-selected:hidden  dark:data-checked:text-pink-400 dark:data-not-checked:text-green-400" 
+                className="inset" 
                 aria-hidden="true" 
               />
             </Radio>
