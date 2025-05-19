@@ -1,15 +1,15 @@
 // src/components/layout/Header.tsx
 import Link from 'next/link';
-import { ThemeSwitcher } from '@/components/common/ThemeSwitcher';
-import BrandThemeSwitcher from '@/components/theme/BrandThemeSwitcher'; // Make sure this is imported
+import ThemeSwitcher from '@/components/common/ThemeSwitcher'; // Changed to default import
+import BrandThemeSwitcher from '@/components/theme/BrandThemeSwitcher';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 
 export default function Header() {
   return (
     <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
       <div className="relative w-full bg-[#FF5A5F] text-white py-1 text-center text-sm z-50">
-  Perfectly aligned with the Staff Web Engineer, Digital Accessibility role
-</div>
+        Perfectly aligned with the Staff Web Engineer, Digital Accessibility role
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <nav className="flex items-center justify-between" aria-label="Main Navigation">
           <div className="flex items-center">
@@ -46,7 +46,7 @@ export default function Header() {
               </li>
             </ul>
             <div className="flex items-center space-x-4">
-              <BrandThemeSwitcher /> {/* Add this line */}
+              <BrandThemeSwitcher />
               <ThemeSwitcher />
               {/* Mobile menu button */}
               <button

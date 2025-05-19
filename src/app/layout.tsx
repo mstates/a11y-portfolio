@@ -5,7 +5,7 @@ import { Poppins } from 'next/font/google';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SkipLink from '@/components/a11y/SkipLink';
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider } from '@/components/common/ThemeProvider';
 import { BrandProvider } from '@/contexts/BrandContext';
 
 // Load Poppins font

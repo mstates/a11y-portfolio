@@ -27,3 +27,6 @@ export function ThemeProvider({
     </NextThemesProvider>
   );
 }
+
+// Add default export
+export default ThemeProvider;

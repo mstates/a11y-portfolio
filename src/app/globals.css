@@ -1,6 +1,9 @@
 /* src/app/globals.css */
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+
 /* Essential CSS variables */
 :root {
   --background-color: #ffffff;
@@ -68,7 +71,7 @@
   
   .btn-primary-airbnb {
     background-color: var(--airbnb-red);
-    color: white;
+    @apply dark:bg-black text-white;
   }
   
   .btn-primary-airbnb:hover {
