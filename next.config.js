@@ -6,8 +6,5 @@ const nextConfig = {
     // Any experimental features you want to enable
   },
 }
-  swcMinify: true,
-};
-main
 
 module.exports = nextConfig

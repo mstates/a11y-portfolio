@@ -1,62 +1,53 @@
 // src/components/theme/BrandThemeProvider.tsx
 'use client';
 
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, } from 'react';
 import type { ReactNode } from 'react';
+import { useSearchParams } from 'next/navigation';
 
-// Define the possible brand themes
+// Define the type for our brand theme
 type BrandTheme = 'default' | 'airbnb';
 
-// Type for the brand theme context
-type BrandThemeContextType = {
-  brandTheme: BrandTheme;
-  setBrandTheme: (theme: BrandTheme) => void;
-};
-
-// Create the context
-const BrandThemeContext = createContext<BrandThemeContextType | undefined>(undefined);
-
-// Props for the BrandThemeProvider
-interface BrandThemeProviderProps {
-  children: ReactNode;
-  defaultBrandTheme?: BrandTheme;
+// Define the shape of our context
+interface BrandThemeContextType {
+  brand: BrandTheme;
+  setBrand: (brand: BrandTheme) => void;
+  isAirbnb: boolean;
 }
 
-export function BrandThemeProvider({
-  children,
-  defaultBrandTheme = 'default',
-}: BrandThemeProviderProps) {
-  // State for the brand theme (default or airbnb)
-  const [brandTheme, setBrandTheme] = useState<BrandTheme>(defaultBrandTheme);
-  const [mounted, setMounted] = useState(false);
+// Create the context with a default value
+const BrandThemeContext = createContext<BrandThemeContextType | undefined>(undefined);
 
-  // Effect to handle mounting and loading saved preferences
+// Provider component
+export function BrandThemeProvider({ children }: { children: ReactNode }) {
+  const searchParams = useSearchParams();
+  const initialBrand = searchParams.get('for') === 'airbnb' ? 'airbnb' : 'default';
+  
+  const [brand, setBrand] = useState<BrandTheme>(initialBrand);
+
+  // Update URL when brand changes
   useEffect(() => {
-    setMounted(true);
-    
-    // Load saved brand theme from localStorage
-    const savedBrandTheme = localStorage.getItem('brandTheme') as BrandTheme;
-    if (savedBrandTheme && (savedBrandTheme === 'default' || savedBrandTheme === 'airbnb')) {
-      setBrandTheme(savedBrandTheme);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      
+      if (brand === 'airbnb') {
+        url.searchParams.set('for', 'airbnb');
+      } else {
+        url.searchParams.delete('for');
+      }
+      
+      window.history.replaceState({}, '', url.toString());
     }
-  }, []);
+  }, [brand]);
 
-  // Effect to apply the brand theme and save preferences
-  useEffect(() => {
-    if (!mounted) return;
-    
-    // Apply the brand theme by adding/removing classes from the document element
-    document.documentElement.classList.remove('theme-default', 'theme-airbnb');
-    document.documentElement.classList.add(`theme-${brandTheme}`);
-    
-    // Save to localStorage
-    localStorage.setItem('brandTheme', brandTheme);
-  }, [brandTheme, mounted]);
+  // Computed value for easier use in components
+  const isAirbnb = brand === 'airbnb';
 
-  // Value to be provided by the context
+  // Value to be provided to consuming components
   const value = {
-    brandTheme,
-    setBrandTheme,
+    brand,
+    setBrand,
+    isAirbnb
   };
 
   return (
@@ -66,7 +57,7 @@ export function BrandThemeProvider({
   );
 }
 
-// Custom hook to use the brand theme context
+// Custom hook to use the context
 export function useBrandTheme() {
   const context = useContext(BrandThemeContext);
   if (context === undefined) {

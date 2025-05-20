@@ -1,67 +1,56 @@
 // src/components/common/ThemeSwitcher.tsx
 'use client';
 
+import { Field, Radio, RadioGroup } from '@headlessui/react';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { Radio, RadioGroup, Label } from '@headlessui/react';
 import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
 
 const themes = [
-  { id: 'light', name: 'Light', icon: SunIcon },
   { id: 'system', name: 'System', icon: ComputerDesktopIcon },
+  { id: 'light', name: 'Light', icon: SunIcon },
   { id: 'dark', name: 'Dark', icon: MoonIcon },
 ];
 
-export function ThemeSwitcher() {
+export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   
-  // Find the current theme object
-  const currentTheme = themes.find(t => t.id === theme) || themes[0];
-
   // Prevent hydration issues
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) {
-    return <div className="h-10 bg-transparent w-36" aria-hidden="true" />;
+    return <div className="h-10 w-36 bg-transparent" aria-hidden="true" />;
   }
 
-export default function Header() {
+  const currentTheme = theme || 'system';
+  
   return (
-    <RadioGroup value={currentTheme} onChange={(option) => setTheme(option.id)}>
-      <Label className="sr-only">Theme</Label>
-      <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-lg">
-        {themes.map((option) => {
-          const Icon = option.icon;
-          return (
+    <RadioGroup 
+      value={currentTheme} 
+      onChange={setTheme} 
+      aria-label="Theme preference"
+      className="theme-switcher"
+    >
+      {themes.map((themeOption) => {
+        const Icon = themeOption.icon;
+        return (
+          <Field key={themeOption.id} className="theme-option">
             <Radio
-              key={option.id}
-              value={option}
-              className={({ checked }) => `
-                ${checked ? 'bg-indigo-600 dark:bg-indigo-300 shadow-sm' : ''}
-                relative rounded-md cursor-pointer p-2 flex items-center justify-center
-                focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
-              `}
+              value={themeOption.id}
+              className="theme-radio"
             >
-              {({ checked }) => (
-                <>
-                  <Icon 
-                    className={`h-5 w-5 ${
-                      checked 
-                        ? 'text-white dark:text-indigo-900' 
-                        : 'text-gray-500 dark:text-gray-200'
-                    }`} 
-                    aria-hidden="true" 
-                  />
-                  <span className="sr-only">{option.name}</span>
-                </>
-              )}
+              <Icon 
+                className="theme-icon" 
+                aria-hidden="true" 
+              />
             </Radio>
-          );
-        })}
-      </div>
+            <span className="sr-only">{themeOption.name}</span>
+          </Field>
+        );
+      })}
     </RadioGroup>
   );
 }

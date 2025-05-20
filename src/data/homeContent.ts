@@ -1,4 +1,63 @@
-export const heroContent = {
+// src/data/homeContent.ts
+
+// Define types for each content section
+interface HeroContent {
+  tagline: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
+interface Metric {
+  number: string;
+  label: string;
+}
+
+interface MetricsContent {
+  heading: string;
+  metrics: Metric[];
+}
+
+interface Company {
+  name: string;
+  logo: string;
+}
+
+interface CompanyLogosContent {
+  heading: string;
+  companies: Company[];
+}
+
+interface TextContent {
+  title: string;
+  content: string;
+}
+
+interface Role {
+  title: string;
+  icon: string;
+  description: string;
+}
+
+interface WhoIAmContent {
+  title: string;
+  intro: string;
+  roles: Role[];
+}
+
+interface QuoteContent {
+  quote: string;
+  attribution: string;
+}
+
+interface CTAContent {
+  title: string;
+  description: string;
+  buttonText: string;
+}
+
+// Define the content with appropriate types
+export const heroContent: Record<string, HeroContent> = {
   default: {
     tagline: "Accessibility Engineering Leader",
     title: "Crafting Inclusive Systems with Precision and Empathy",
@@ -13,7 +72,7 @@ export const heroContent = {
   }
 };
 
-export const metricsContent = {
+export const metricsContent: Record<string, MetricsContent> = {
   default: {
     heading: "Trusted to Lead at Scale",
     metrics: [
@@ -34,7 +93,7 @@ export const metricsContent = {
   }
 };
 
-export const companyLogosContent = {
+export const companyLogosContent: Record<string, CompanyLogosContent> = {
   default: {
     heading: "Companies I've Worked With",
     companies: [
@@ -59,7 +118,7 @@ export const companyLogosContent = {
   }
 };
 
-export const lookingForContent = {
+export const lookingForContent: Record<string, TextContent> = {
   default: {
     title: "What I'm Looking For",
     content: `I'm seeking a team that values accessibility as a foundational principle—not just a compliance checkbox. An environment where inclusive design drives innovation rather than constraining it.
@@ -82,7 +141,7 @@ I'm particularly interested in how accessibility at Airbnb can create belonging 
   }
 };
 
-export const whoIAmContent = {
+export const whoIAmContent: Record<string, WhoIAmContent> = {
   default: {
     title: "Who I Am",
     intro: "I embed accessibility into the DNA of products, teams, and organizations—crafting scalable systems that welcome every user, everywhere with intention and empathy.",
@@ -127,7 +186,7 @@ export const whoIAmContent = {
   }
 };
 
-export const quoteContent = {
+export const quoteContent: Record<string, QuoteContent> = {
   default: {
     quote: "Accessibility isn't a layer to apply at the end—it's the language we build from the start.",
     attribution: ""
@@ -138,7 +197,7 @@ export const quoteContent = {
   }
 };
 
-export const ctaContent = {
+export const ctaContent: Record<string, CTAContent> = {
   default: {
     title: "Ready to Elevate Your Organization's Accessibility Practice?",
     description: "Let's discuss how my unique combination of strategic leadership and technical expertise can help your team create digital experiences that truly welcome everyone.",
